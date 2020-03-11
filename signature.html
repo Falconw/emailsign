@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html style="font-family: 'Tajawal', sans-serif;">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+        <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body style="text-align: center;">
+        <!-- ************ Page Headder ************-->
+        <div class="hideAndSeek" dir="rtl">
+                <h4>
+                    الرجاء استخدام متصفح الكروم
+                </h4>
+                <img height="30px" src="https://techelucid.com/wp-content/uploads/2017/11/Chrome-Hacks-You-Probably-Know-Tips-and-Tricks-To-Make-Chrome-Faster.png" alt="Chrome Logo">
+        </div>
+
+        <br>
+        <!-- ************ Signature Image ************-->
+        <div id="sign">
+            <div style="text-align: center; transition: ease;">
+                <img id="image" src="https://i.postimg.cc/PrrR9DPC/road-trees.jpg" style="width: 100%; max-width: 500px; min-width: 300px;" alt="Signature">
+            </div>
+        </div>
+
+        <br>
+        <!-- ************ New signature Image Web Location ************-->
+        <div dir="rtl" id="inputsDiv" class="hideAndSeek">
+            <label for="imgLink" dir="rtl">الرجاء ادخال عنوان صورة التوقيع...</label>
+            <br>
+            <input type="text" style="margin-top: 5px;" name="imgLink" autofocus id="imgLink" size="50" placeholder="EXAMPLE: http://hostname.com/imageLink/" dir="ltr">
+            <input type="button" value="نسخ" onclick="{copyCode()}">
+            <h4 dir="rtl">
+                يمكن رفع صورة التوقيع على موقع 
+                <a href="https://postimages.org/" target="_blank">postimages</a>
+                ...
+            </h4>
+
+            <br>
+
+            <!-- <input type="button" value="Window Height" onclick="{console.log(parseInt(window.innerWidth));}"> -->
+
+            <h5 id="rights" dir="ltr">@Alrights Reserved to <span style="font-family: 'Dancing Script', cursive;">IAlarfaj</span>.</h5>
+        </div>
+
+        <script>
+            function copyCode() {
+                // replace img SRC (location) with the location from the input box
+                const imgLink = $("#imgLink").val();
+                let img = $("#image");
+                img.attr("src", imgLink);
+
+                // Hide everythig other than the Signature Image
+                $(".hideAndSeek, br").css("display", "none");
+
+                // Copy page to clipboard
+                const selectWindow = window.getSelection();
+                const html = document.querySelector("*");
+                selectWindow.selectAllChildren(html);
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();
+
+                // Alert
+                alert('تم النسخ... الرجاء لصق صورة التوقيع في خانة إضافة توقيع في خيرات الايميل...');
+
+                // Testing Link
+                // https://i.postimg.cc/WpxpSs9q/hind.jpg
+            }
+
+            
+            function wWidth() {
+                let windowWidth = parseInt(window.innerWidth);
+
+                $("#rights").css("margin", "0");
+                $("#rights").css("padding", "0");
+                $("#rights").css("position", "absolute");
+                $("#rights").css("bottom", "0");
+                $("#rights").css("width", windowWidth);
+                $("#rights").css("text-align", "center");
+                $("#rights").css("color", "#AFAFAF");
+            };
+            wWidth();
+            $(window).on('resize', wWidth);
+        </script>
+    </body>
+</html>
